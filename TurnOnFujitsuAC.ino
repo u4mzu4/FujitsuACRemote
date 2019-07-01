@@ -12,9 +12,9 @@
 
 //Global variables
 const unsigned int kIrLed = 4;  // ESP8266 GPIO pin to use. Recommended: 4 (D2).
-const char* auth          = "5275352dc1fa4a78b15b81604290bf9c";
-const char* ssid          = "DarpAsusNet_2.4";
-const char* password      = "andrew243";
+const char* auth          = "";
+const char* ssid          = "";
+const char* password      = "";
 
 unsigned int powerValue   = 0;
 unsigned int swingValue   = 2;
