@@ -8,6 +8,6 @@ https://github.com/chaeplin/rm-mini3-to-esp8266
 
 SW based on these libraries:
 
-https://github.com/markszabo/IRremoteESP8266
+https://github.com/crankyoldgit/IRremoteESP8266
 
 https://github.com/blynkkk/blynk-library
