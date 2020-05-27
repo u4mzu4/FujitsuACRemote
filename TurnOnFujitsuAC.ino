@@ -5,6 +5,7 @@
 #include <ir_Fujitsu.h>
 #include <ESP8266WiFi.h>
 #include <BlynkSimpleEsp8266_SSL.h>
+#include <credentials.h>
 
 //Defines
 #define TIMEOUT 5000  //5 sec
@@ -12,10 +13,6 @@
 
 //Global variables
 const unsigned int kIrLed = 4;  // ESP8266 GPIO pin to use. Recommended: 4 (D2).
-const char* auth          = "";
-const char* ssid          = "";
-const char* password      = "";
-
 unsigned int powerValue   = 0;
 unsigned int swingValue   = 2;
 unsigned int modeValue    = 1;
@@ -31,52 +28,52 @@ BLYNK_WRITE(V0)
 {
   powerValue = param.asInt();
   // process received value
-    switch (powerValue)
+  switch (powerValue)
   {
     case 0:
-    ac.setCmd(kFujitsuAcCmdTurnOff);
-    swingValue = 2;
-    ac.setSwing(kFujitsuAcSwingOff);
-    Blynk.virtualWrite(V1, swingValue);
-    modeValue = 1;
-    ac.setMode(kFujitsuAcModeAuto);
-    Blynk.virtualWrite(V2, modeValue);
-    fanValue = 1;
-    ac.setFanSpeed(kFujitsuAcFanAuto);
-    Blynk.virtualWrite(V3, fanValue);
-    tempValue = FUJITSU_AC_MIN_TEMP;
-    ac.setTemp(tempValue);
-    Blynk.virtualWrite(V4, tempValue);
-    ecoMode = 0;
-    Blynk.virtualWrite(V6, ecoMode);
-    powerfulMode = 0;
-    Blynk.virtualWrite(V7, powerfulMode);
-    ac.send();
-    break;
-    
+      ac.setCmd(kFujitsuAcCmdTurnOff);
+      swingValue = 2;
+      ac.setSwing(kFujitsuAcSwingOff);
+      Blynk.virtualWrite(V1, swingValue);
+      modeValue = 1;
+      ac.setMode(kFujitsuAcModeAuto);
+      Blynk.virtualWrite(V2, modeValue);
+      fanValue = 1;
+      ac.setFanSpeed(kFujitsuAcFanAuto);
+      Blynk.virtualWrite(V3, fanValue);
+      tempValue = FUJITSU_AC_MIN_TEMP;
+      ac.setTemp(tempValue);
+      Blynk.virtualWrite(V4, tempValue);
+      ecoMode = 0;
+      Blynk.virtualWrite(V6, ecoMode);
+      powerfulMode = 0;
+      Blynk.virtualWrite(V7, powerfulMode);
+      ac.send();
+      break;
+
     case 1:
-    ac.setCmd(kFujitsuAcCmdTurnOn);
-    swingValue = 1;
-    ac.setSwing(kFujitsuAcSwingVert);
-    Blynk.virtualWrite(V1, swingValue);
-    modeValue = 2;
-    ac.setMode(kFujitsuAcModeCool);
-    Blynk.virtualWrite(V2, modeValue);
-    fanValue = 1;
-    ac.setFanSpeed(kFujitsuAcFanAuto);
-    Blynk.virtualWrite(V3, fanValue);
-    tempValue = ONTEMP;
-    ac.setTemp(tempValue);
-    Blynk.virtualWrite(V4, tempValue);
-    ecoMode = 0;
-    Blynk.virtualWrite(V6, ecoMode);
-    powerfulMode = 0;
-    Blynk.virtualWrite(V7, powerfulMode);
-    ac.send();
-    break;
-    
+      ac.setCmd(kFujitsuAcCmdTurnOn);
+      swingValue = 1;
+      ac.setSwing(kFujitsuAcSwingVert);
+      Blynk.virtualWrite(V1, swingValue);
+      modeValue = 2;
+      ac.setMode(kFujitsuAcModeCool);
+      Blynk.virtualWrite(V2, modeValue);
+      fanValue = 1;
+      ac.setFanSpeed(kFujitsuAcFanAuto);
+      Blynk.virtualWrite(V3, fanValue);
+      tempValue = ONTEMP;
+      ac.setTemp(tempValue);
+      Blynk.virtualWrite(V4, tempValue);
+      ecoMode = 0;
+      Blynk.virtualWrite(V6, ecoMode);
+      powerfulMode = 0;
+      Blynk.virtualWrite(V7, powerfulMode);
+      ac.send();
+      break;
+
     default:
-    break;
+      break;
   }
 }
 
@@ -87,18 +84,18 @@ BLYNK_WRITE(V1)
   switch (swingValue)
   {
     case 1:
-    ac.setSwing(kFujitsuAcSwingVert);
-    break;
+      ac.setSwing(kFujitsuAcSwingVert);
+      break;
     case 2:
-    ac.setSwing(kFujitsuAcSwingOff);
-    break;
+      ac.setSwing(kFujitsuAcSwingOff);
+      break;
     default:
-    break;
+      break;
   }
   if (powerValue == 1)
   {
     ac.setCmd(kFujitsuAcCmdStayOn);
-    ac.send();    
+    ac.send();
   }
 }
 
@@ -109,22 +106,22 @@ BLYNK_WRITE(V2)
   switch (modeValue)
   {
     case 1:
-    ac.setMode(kFujitsuAcModeAuto);
-    break;
+      ac.setMode(kFujitsuAcModeAuto);
+      break;
     case 2:
-    ac.setMode(kFujitsuAcModeCool);
-    break;
+      ac.setMode(kFujitsuAcModeCool);
+      break;
     case 3:
-    ac.setMode(kFujitsuAcModeDry);
-    break;
+      ac.setMode(kFujitsuAcModeDry);
+      break;
     case 4:
-    ac.setMode(kFujitsuAcModeFan);
-    break;
+      ac.setMode(kFujitsuAcModeFan);
+      break;
     case 5:
-    ac.setMode(kFujitsuAcModeHeat);
-    break;
+      ac.setMode(kFujitsuAcModeHeat);
+      break;
     default:
-    break;
+      break;
   }
   ecoMode = 0;
   powerfulMode = 0;
@@ -133,7 +130,7 @@ BLYNK_WRITE(V2)
   if (powerValue == 1)
   {
     ac.setCmd(kFujitsuAcCmdStayOn);
-    ac.send();    
+    ac.send();
   }
 }
 
@@ -144,22 +141,22 @@ BLYNK_WRITE(V3)
   switch (fanValue)
   {
     case 1:
-    ac.setFanSpeed(kFujitsuAcFanAuto);
-    break;
+      ac.setFanSpeed(kFujitsuAcFanAuto);
+      break;
     case 2:
-    ac.setFanSpeed(kFujitsuAcFanHigh);
-    break;
+      ac.setFanSpeed(kFujitsuAcFanHigh);
+      break;
     case 3:
-    ac.setFanSpeed(kFujitsuAcFanMed);
-    break;
+      ac.setFanSpeed(kFujitsuAcFanMed);
+      break;
     case 4:
-    ac.setFanSpeed(kFujitsuAcFanLow);
-    break;
+      ac.setFanSpeed(kFujitsuAcFanLow);
+      break;
     case 5:
-    ac.setFanSpeed(kFujitsuAcFanQuiet);
-    break;
+      ac.setFanSpeed(kFujitsuAcFanQuiet);
+      break;
     default:
-    break;
+      break;
   }
   ecoMode = 0;
   powerfulMode = 0;
@@ -168,7 +165,7 @@ BLYNK_WRITE(V3)
   if (powerValue == 1)
   {
     ac.setCmd(kFujitsuAcCmdStayOn);
-    ac.send();    
+    ac.send();
   }
 }
 
@@ -184,7 +181,7 @@ BLYNK_WRITE(V4)
   if (powerValue == 1)
   {
     ac.setCmd(kFujitsuAcCmdStayOn);
-    ac.send();    
+    ac.send();
   }
 }
 
@@ -229,7 +226,7 @@ BLYNK_WRITE(V7)
 
 void setup() {
   unsigned long timeouts;
-  
+
   ac.begin();
   delay(100);
   WiFi.mode(WIFI_STA);
@@ -238,7 +235,7 @@ void setup() {
   timeouts = millis();
   while (WiFi.status() != WL_CONNECTED) {
     delay(500);
-    if (millis()-timeouts > TIMEOUT)
+    if (millis() - timeouts > TIMEOUT)
     {
       break;
     }
@@ -251,7 +248,7 @@ void setup() {
   ac.setMode(kFujitsuAcModeAuto);
   ac.setFanSpeed(kFujitsuAcFanAuto);
   ac.setTemp(kFujitsuAcMinTemp);
-  
+
   Blynk.virtualWrite(V0, powerValue);
   Blynk.virtualWrite(V1, swingValue);
   Blynk.virtualWrite(V2, modeValue);
