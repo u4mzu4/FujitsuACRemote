@@ -1,7 +1,4 @@
-// Broadlink RM 3 mini + Lolin D1 mini v3.0 + Fujitsu ASYG7LMCA + Blynk
-#include <Arduino.h>
-#include <IRremoteESP8266.h>
-#include <IRsend.h>
+// Eachen IR DC6 + Fujitsu ASYG7LMCA + Blynk
 #include <ir_Fujitsu.h>
 #include <ESP8266WiFi.h>
 #include <BlynkSimpleEsp8266_SSL.h>
@@ -12,7 +9,7 @@
 #define ONTEMP  24    //24 °C
 
 //Global variables
-const unsigned int kIrLed = 14;  // ESP8266 GPIO pin to use. Recommended: 4 (D2).
+const unsigned int kIrLed = 14;  // ESP8266 GPIO pin to use.
 unsigned int powerValue   = 0;
 unsigned int swingValue   = 2;
 unsigned int modeValue    = 1;
