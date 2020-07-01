@@ -1,10 +1,10 @@
 # FujitsuACRemote
 FuJitsu IR remote via Blynk
 
-Broadlink RM3 mini + Lolin D1 mini + Blynk
+Eachen IR DC6 + Blynk
 
-HW based on this modification:
-https://github.com/chaeplin/rm-mini3-to-esp8266
+HW based on this product:
+https://tuya.eachen.cc/eachen-ir-dc6-smart-wifi-home-remote-control-universal-ir-bridge-wireless-infrared-controller-compatible-p0017.html
 
 SW based on these libraries:
 
