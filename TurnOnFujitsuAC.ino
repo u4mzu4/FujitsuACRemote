@@ -12,7 +12,7 @@
 #define ONTEMP  24    //24 °C
 
 //Global variables
-const unsigned int kIrLed = 4;  // ESP8266 GPIO pin to use. Recommended: 4 (D2).
+const unsigned int kIrLed = 14;  // ESP8266 GPIO pin to use. Recommended: 4 (D2).
 unsigned int powerValue   = 0;
 unsigned int swingValue   = 2;
 unsigned int modeValue    = 1;
@@ -240,7 +240,7 @@ void setup() {
       break;
     }
   }
-  Blynk.config(auth);
+  Blynk.config(auth2);
   Blynk.connect();
   ac.setModel(ARREB1E);
   ac.setCmd(kFujitsuAcCmdTurnOff);
